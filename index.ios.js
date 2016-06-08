@@ -11,13 +11,19 @@ import {
 // Create a react component
 var Weather = React.createClass({
     render: function() {
+        var pins = [{
+            latitude: 37,
+            longitude: -95
+        }];
+
         return <MapView
+            annotations={pins}
             onRegionChangeComplete={this.onRegionChangeComplete}
             style={styles.map}>
         </MapView>
     },
     onRegionChangeComplete: function(region) {
-        console.log(region)
+        
     }
 });
 
