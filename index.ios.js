@@ -1,5 +1,6 @@
 // Import the code we need
 import React from 'react';
+import Api from './src/api';
 
 import {
     AppRegistry,
@@ -15,7 +16,10 @@ var Weather = React.createClass({
             pin: {
                 latitude: 0,
                 longitude: 0
-            }
+            },
+            city: '',
+            temperature: '',
+            description: ''
         };
     },
     render: function() {
@@ -32,6 +36,12 @@ var Weather = React.createClass({
                 latitude: region.latitude
             }
         });
+
+        Api(region.latitude, region.longitude)
+            .then((data) => {
+                console.log(data);
+                this.setState(data);
+            });
     }
 });
 
