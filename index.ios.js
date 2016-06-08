@@ -6,6 +6,7 @@ import {
     AppRegistry,
     MapView,
     StyleSheet,
+    Text,
     View
 } from 'react-native';
 
@@ -23,11 +24,18 @@ var Weather = React.createClass({
         };
     },
     render: function() {
-        return <MapView
-            annotations={[this.state.pin]}
-            onRegionChangeComplete={this.onRegionChangeComplete}
-            style={styles.map}>
-        </MapView>
+        return <View style={styles.container}>
+            <MapView
+                annotations={[this.state.pin]}
+                onRegionChangeComplete={this.onRegionChangeComplete}
+                style={styles.map}>
+            </MapView>
+            <View style={styles.textWrapper}>
+                <Text style={styles.text}>{this.state.city}</Text>
+                <Text style={styles.text}>{this.state.temperature}</Text>
+                <Text style={styles.text}>{this.state.description}</Text>
+            </View>
+        </View>
     },
     onRegionChangeComplete: function(region) {
         this.setState({
@@ -47,8 +55,22 @@ var Weather = React.createClass({
 
 // Style the react component
 var styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'stretch',
+        backgroundColor: '#f5fcff'
+    },
     map: {
-        flex: 1
+        flex: 2,
+        marginTop: 30
+    },
+    textWrapper: {
+        flex: 1,
+        alignItems: 'center'
+    },
+    text: {
+        fontSize: 30
     }
 });
 

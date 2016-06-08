@@ -1,3 +1,5 @@
+import Lodash from 'lodash';
+
 var rootURL = 'http://api.openweathermap.org/data/2.5/weather?APPID=bfba5db7cce578048f894c823a59be50'
 
 var kelvinToFarenheight = function(kelvin) {
@@ -16,7 +18,7 @@ module.exports = function(latitude, longitude) {
             return {
                 city: json.name,
                 temperature: kelvinToFarenheight(json.main.temp),
-                description: json.weather[0].description
+                description: Lodash.capitalize(json.weather[0].description)
             }
         });
 }
