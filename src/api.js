@@ -21,4 +21,5 @@ module.exports = function(latitude, longitude) {
                 description: Lodash.capitalize(json.weather[0].description)
             }
         });
+        
 }
